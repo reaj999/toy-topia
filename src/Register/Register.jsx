@@ -45,6 +45,8 @@ function Register() {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
+
+        console.log(name, photoURL, email, password);
         const passPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
         if (!passPattern.test(password)) {
@@ -90,7 +92,7 @@ function Register() {
                     <input type="email" name='email' className="input" placeholder="Email" />
 
                     <label className="label">Photo URL</label>
-                    <input type="url" name='photoURL' className="input" placeholder="Photo URL" />
+                    <input type="text" name='photoURL' className="input" placeholder="Photo URL" />
 
                     <label className="label">Password</label>
                     <input type="password" name='password' className="input" placeholder="Password" />

@@ -1,8 +1,14 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
+
 
 const Login = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const { signInUser, signInWithGoogle } = use(AuthContext);
 
@@ -40,6 +46,10 @@ const Login = () => {
             });
     }
 
+    const togglePasswordVisibility = (event) => {
+        event.preventDefault();
+        setShowPassword(!showPassword);
+    }
 
     return (
         <div className='flex justify-center items-center pt-20'>
@@ -50,8 +60,14 @@ const Login = () => {
                     <label className="label">Email</label>
                     <input type="email" className="input" name="email" placeholder="Email" id='email' />
 
-                    <label className="label">Password</label>
-                    <input type="password" className="input" name="password" placeholder="Password" />
+
+                    <div className='relative'>
+                        <label className="label">Password</label>
+                        <input type={showPassword ? 'text' : 'password'} className="input" name="password" placeholder="Password" />
+                        <button className="btn btn-xs absolute right-2 bottom-2 border-none" type='button' onClick={togglePasswordVisibility}>
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                    </div>
 
                     <button className="btn btn-neutral mt-4">Login</button>
 
@@ -60,7 +76,7 @@ const Login = () => {
                         Login with Google
                     </button>
 
-                   <div className="text-center mt-3">
+                    <div className="text-center mt-3">
                         <Link
                             to="/forgotPassword"
                             className="link link-primary"
