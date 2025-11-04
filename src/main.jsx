@@ -11,6 +11,8 @@ import Login from './Login/Login.jsx';
 import Register from './Register/Register.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import PrivateRoutes from './Route/PrivateRoutes.jsx';
+import ForgotPassword from '../src/components/ForgetPass/ForgotPassword.jsx';
+import MyProfile from './components/Profile/MyProfile.jsx';
 
 // export const AuthContext = createContext(null);
 // const userInfo = {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "register",
         Component: Register,
+      },
+      {
+        path: "forgotPassword",
+        Component: ForgotPassword,
+      },
+      {
+        path: "myProfile",
+        element: <PrivateRoutes><MyProfile></MyProfile></PrivateRoutes>,
       },
     ],
   },

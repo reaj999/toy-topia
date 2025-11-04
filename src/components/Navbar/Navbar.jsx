@@ -23,6 +23,12 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>Home</NavLink></li>
         <li><NavLink to="/Toys" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>Toys</NavLink></li>
+        
+        {
+            user && <>
+            <li><NavLink to="/myProfile" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>My Profile</NavLink></li>
+            </>
+        }
     </>
 
     return (
