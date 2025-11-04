@@ -1,31 +1,53 @@
-import { createUserWithEmailAndPassword} from 'firebase/auth';
+//import { createUserWithEmailAndPassword} from 'firebase/auth';
 //import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
-import auth from '../Firebase/firebase.init';
+//import auth from '../Firebase/firebase.init';
+import React, { use } from 'react';
+import { AuthContext } from '../Context/AuthContext.jsx';
 
 function Register() {
 
+    const {createUser} = use(AuthContext);
 
-    const handleRegister = (event) => {
+
+        const handleRegister = (event) => {
         event.preventDefault();
-        const name = event.target.name.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        console.log('Registering user:', { name, email, password });
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log('User registered successfully:', user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error('Error registering user:', errorCode, errorMessage);
-            });
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+        .then((result) => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
 
 
-    };
+    // const handleRegister = (event) => {
+    //     event.preventDefault();
+    //     const name = event.target.name.value;
+    //     const email = event.target.email.value;
+    //     const password = event.target.password.value;
+    //     console.log('Registering user:', { name, email, password });
+
+    //     createUserWithEmailAndPassword(auth, email, password)
+    //         .then((userCredential) => {
+    //             const user = userCredential.user;
+    //             console.log('User registered successfully:', user);
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             console.error('Error registering user:', errorCode, errorMessage);
+    //         });
+
+
+    // };
+
 
     return (
         <div className='flex justify-center items-center pt-20'>

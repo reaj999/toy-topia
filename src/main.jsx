@@ -10,6 +10,7 @@ import Toys from './components/Toys/Toys.jsx';
 import Login from './Login/Login.jsx';
 import Register from './Register/Register.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
+import PrivateRoutes from './Route/PrivateRoutes.jsx';
 
 // export const AuthContext = createContext(null);
 // const userInfo = {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
       },
       {
         path: "toys",
-        Component: Toys,
+        // Component: Toys,
+        element: <PrivateRoutes><Toys></Toys></PrivateRoutes>,
       },
       {
         path: "login",

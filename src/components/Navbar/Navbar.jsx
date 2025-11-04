@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
+
+    const {user, signOutUser} = use(AuthContext);
+
+    const handleSignOut = () => {
+        signOutUser()
+        .then(() => {
+            console.log('User signed out successfully');
+        })
+        .catch((error) => {
+            console.error('Error signing out user:', error);
+        });
+    }
+
 
     const activeLinkClass = "relative bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent font-bold after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-full after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2]";
     const inactiveLinkClass = "font-bold relative after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2] after:transition-all after:duration-300 hover:after:w-full";
@@ -32,7 +46,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end md:mr-4">
-                <Link to="/Login" className="btn bg-[#8c52ff] text-white font-bold border-none">Login</Link>
+                {user ? 
+                <a onClick={handleSignOut} className="btn bg-[#8c52ff] text-white font-bold border-none">Log out</a> : 
+                <Link to="/Login" className="btn bg-[#8c52ff] text-white font-bold border-none">Login</Link>}
             </div>
         </div>
     );
