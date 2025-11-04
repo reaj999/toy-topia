@@ -14,11 +14,8 @@ import PrivateRoutes from './Route/PrivateRoutes.jsx';
 import ForgotPassword from '../src/components/ForgetPass/ForgotPassword.jsx';
 import MyProfile from './components/Profile/MyProfile.jsx';
 
-// export const AuthContext = createContext(null);
-// const userInfo = {
-//   name: "ABCD",
-//   email: "abcd@abcd.com",
-// };
+
+
 
 const router = createBrowserRouter([
   {

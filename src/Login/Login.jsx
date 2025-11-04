@@ -8,6 +8,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('');
 
 
     const { signInUser, signInWithGoogle } = use(AuthContext);
@@ -20,6 +21,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        setError('');
 
         signInUser(email, password)
             .then((result) => {
@@ -30,6 +32,7 @@ const Login = () => {
             })
             .catch((error) => {
                 console.error(error);
+                setError(error.message);
             });
 
     }
@@ -95,6 +98,9 @@ const Login = () => {
                         Not Registered yet? <Link to="/Register" className="link link-primary">Register now</Link>
                     </p>
                 </fieldset>
+                {
+                    error && <p className="text-red-500 mt-2">{error}</p>
+                }
             </form>
         </div>
     );
