@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+    @apply bg-[#F5F5F5] text-base-content min-h-screen;
+}
+}
