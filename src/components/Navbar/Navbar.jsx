@@ -4,16 +4,16 @@ import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
 
-    const {user, signOutUser} = use(AuthContext);
+    const { user, signOutUser } = use(AuthContext);
 
     const handleSignOut = () => {
         signOutUser()
-        .then(() => {
-            console.log('User signed out successfully');
-        })
-        .catch((error) => {
-            console.error('Error signing out user:', error);
-        });
+            .then(() => {
+                console.log('User signed out successfully');
+            })
+            .catch((error) => {
+                console.error('Error signing out user:', error);
+            });
     }
 
 
@@ -23,10 +23,10 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>Home</NavLink></li>
         <li><NavLink to="/Toys" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>Toys</NavLink></li>
-        
+
         {
             user && <>
-            <li><NavLink to="/myProfile" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>My Profile</NavLink></li>
+                <li><NavLink to="/myProfile" className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}>My Profile</NavLink></li>
             </>
         }
     </>
@@ -51,10 +51,31 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end md:mr-4">
-                {user ? 
-                <a onClick={handleSignOut} className="btn bg-[#8c52ff] text-white font-bold border-none">Log out</a> : 
-                <Link to="/Login" className="btn bg-[#8c52ff] text-white font-bold border-none">Login</Link>}
+            <div className="navbar-end md:mr-4 gap-4">
+                {user && (
+                    <div className="relative group">
+                        <div className="btn btn-circle bg-white border-none overflow-hidden">
+                            <img
+                                src={user.photoURL || 'https://i.ibb.co/2FxYj4c/default-avatar.png'}
+                                alt={user.displayName || 'User'}
+                                className="w-full h-full object-cover rounded-full"
+                            />
+                        </div>
+                        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 text-sm bg-gray-800 text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+                            {user.displayName || 'User'}
+                        </span>
+                    </div>
+                )}
+                {user ? (
+                    <button onClick={handleSignOut} className="btn bg-[#8c52ff] text-white font-bold border-none">
+                        Log out
+                    </button>
+                ) : (
+                    <Link to="/Login" className="btn bg-[#8c52ff] text-white font-bold border-none">
+                        Login
+                    </Link>
+                )}
+
             </div>
         </div>
     );
