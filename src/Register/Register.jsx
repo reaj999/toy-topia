@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext.jsx';
 import { signOut } from 'firebase/auth';
@@ -7,6 +7,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
+  useEffect(() => {
+    document.title = 'Register | Toy Topia';
+  }, []);
+
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const { createUser, signInWithGoogle } = use(AuthContext);

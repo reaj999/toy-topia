@@ -1,6 +1,10 @@
 import React from 'react';
+import { useEffect } from 'react';
 
-const terms = () => {
+const Terms = () => {
+        useEffect(() => {
+        document.title = 'Terms and Conditions | Toy Topia';
+        }, []);
     return (
         <div className='flex items-center justify-center flex-col pt-20'>
             <div className="max-w-4xl md:mx-auto ml-2 mr-2 p-6 bg-white rounded-lg shadow-md mt-10 items-center">
@@ -14,4 +18,4 @@ const terms = () => {
     );
 };
 
-export default terms;
+export default Terms;

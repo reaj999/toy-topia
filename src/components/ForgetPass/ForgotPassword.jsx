@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
+
 const ForgotPassword = () => {
+
+        useEffect(() => {
+        document.title = 'Forgot Password | Toy Topia';
+        }, []);
+
     const location = useLocation();
     const [email, setEmail] = useState('');
 

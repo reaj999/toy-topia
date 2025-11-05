@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useState, useEffect} from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import auth from '../../Firebase/firebase.init';
@@ -6,6 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const MyProfile = () => {
+  useEffect(() => {
+    document.title = 'My Profile | Toy Topia';
+  }, []);
+
   const { user } = use(AuthContext);
   const [name, setName] = useState(user?.displayName || '');
   const [photoURL, setPhotoURL] = useState(user?.photoURL || '');

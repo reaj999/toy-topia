@@ -1,10 +1,18 @@
 import React from 'react';
 import Data from '../../../public/Data.json';
 import { Link } from 'react-router';
+import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+
 
 
 const Toys = () => {
     const toys = Data;
+
+    useEffect(() => {
+    document.title = 'All Toys | Toy Topia';
+    }, []);
+
     console.log(toys);
     return (
         <div>

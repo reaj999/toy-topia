@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useState, useEffect} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -6,6 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  useEffect(() => {
+    document.title = 'Login | Toy Topia';
+  }, []);
+
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 

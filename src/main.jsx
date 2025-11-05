@@ -13,10 +13,12 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import PrivateRoutes from './Route/PrivateRoutes.jsx';
 import ForgotPassword from '../src/components/ForgetPass/ForgotPassword.jsx';
 import MyProfile from './components/Profile/MyProfile.jsx';
-import terms from './components/terms/terms.jsx';
-import privacy from './components/Privacy/privacy.jsx';
+import terms from './components/terms/Terms.jsx';
+import privacy from './components/Privacy/Privacy.jsx';
 import ErrorPage from '../src/components/Error page/Error.jsx';
 import ToyDetailed from './components/Detailed/ToyDetailed.jsx';
+import { HelmetProvider } from 'react-helmet-async';
+import ReactDOM from 'react-dom';
 
 
 
@@ -73,10 +75,14 @@ const router = createBrowserRouter([
 
 
 
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider>
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+    </HelmetProvider>
   </StrictMode>,
 )

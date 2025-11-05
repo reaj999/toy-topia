@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import Slider from '../slider/slider';
 import { AuthContext } from '../../Context/AuthContext.jsx';
 import Data from '../../../public/Data.json';
@@ -8,6 +8,9 @@ const toy = Data;
 
 
 const Home = () => {
+    useEffect(() => {
+        document.title = 'Home | Toy Topia';
+    }, []);
     const authInfo = use(AuthContext);
     console.log(authInfo);
     return (

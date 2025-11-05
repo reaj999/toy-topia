@@ -1,6 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
 
-const privacy = () => {
+const Privacy = () => {
+
+        useEffect(() => {
+        document.title = 'Privacy Policy | Toy Topia';
+        }, []);
+
     return (
 
         <div className='flex items-center justify-center flex-col pt-20'>
@@ -13,4 +19,4 @@ const privacy = () => {
     );
 };
 
-export default privacy;
+export default Privacy;

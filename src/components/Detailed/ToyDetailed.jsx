@@ -2,17 +2,26 @@ import React from "react";
 import { useParams } from "react-router";
 import Data from "../../../public/Data.json";
 import { MdStarRate } from "react-icons/md";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from 'react-helmet-async';
 
 const ToyDetailed = () => {
+
     const { toyId } = useParams();
     const toy = Data.find((item) => item.toyId === parseInt(toyId));
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [successMessage, setSuccessMessage] = useState("");
+
+    useEffect(() => {
+        if (toy) {
+            document.title = `${toy.toyName} | Toy Topia`;
+        } else {
+            document.title = "Toy Details | Toy Topia";
+        }
+    }, [toy]);
 
     if (!toy) {
         return <h2 className="text-center mt-10 text-xl">Toy not found!</h2>;
@@ -31,6 +40,10 @@ const ToyDetailed = () => {
 
     return (
         <div className="max-w-4xl mx-auto mt-10 bg-base-100 p-8 shadow-md rounded-lg mb-8">
+            {/* <Helmet>
+                <title>{toy?.toyName ? `${toy.toyName} | Toy Topia` : 'Toy Details | Toy Topia'}</title>
+                <meta name="description" content={toy?.description || 'Toy details page'} />
+            </Helmet> */}
             <img
                 src={toy.pictureURL}
                 alt={toy.toyName}
@@ -76,7 +89,7 @@ const ToyDetailed = () => {
                     <button type="submit" className="btn btn-primary w-full">
                         Try Now
                     </button>
-                </form>  
+                </form>
             </div>
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
         </div>
