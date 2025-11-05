@@ -13,7 +13,10 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import PrivateRoutes from './Route/PrivateRoutes.jsx';
 import ForgotPassword from '../src/components/ForgetPass/ForgotPassword.jsx';
 import MyProfile from './components/Profile/MyProfile.jsx';
-
+import terms from './components/terms/terms.jsx';
+import privacy from './components/Privacy/privacy.jsx';
+import ErrorPage from '../src/components/Error page/Error.jsx';
+import ToyDetailed from './components/Detailed/ToyDetailed.jsx';
 
 
 
@@ -21,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -46,6 +50,22 @@ const router = createBrowserRouter([
       {
         path: "myProfile",
         element: <PrivateRoutes><MyProfile></MyProfile></PrivateRoutes>,
+      },
+      {
+        path: "terms",
+        Component: terms,
+      },
+      {
+        path: "privacy",
+        Component: privacy,
+      },
+      {
+        path: "toys/:toyId",
+        element: <PrivateRoutes><ToyDetailed></ToyDetailed></PrivateRoutes>,
+      },
+      {
+        path: "*",
+        Component: ErrorPage,
       },
     ],
   },

@@ -13,8 +13,8 @@ const Footer = () => {
             </aside>
 
             <nav className="flex gap-4 mt-3 sm:mt-0 text-sm">
-                <Link to="/" className="hover:underline">Terms & Conditions</Link>
-                <Link to="/" className="hover:underline">Privacy Policy</Link>
+                <Link to="/terms" className="hover:underline">Terms & Conditions</Link>
+                <Link to="/privacy" className="hover:underline">Privacy Policy</Link>
             </nav>
 
             <div className="flex gap-4 mt-3 sm:mt-0 text-lg">
