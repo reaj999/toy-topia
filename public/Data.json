@@ -13,13 +13,13 @@
   },
   {
     "toyId": 2,
-    "toyName": "Barbie Dreamhouse",
+    "toyName": "Barbie Dream house",
     "sellerName": "Barbie Store Local",
     "sellerEmail": "info@barbiestore.com",
     "price": 199.99,
     "rating": 4.8,
     "availableQuantity": 30,
-    "description": "A beautiful Barbie Dreamhouse with multiple rooms and accessories, perfect for role-play and imaginative adventures.",
+    "description": "A beautiful Barbie Dream house with multiple rooms and accessories, perfect for role-play and imaginative adventures.",
     "pictureURL": "https://i.ibb.co/DPVnqdNS/s-l1200.jpg",
     "subCategory": "Dolls"
   },
